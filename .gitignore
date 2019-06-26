@@ -2,3 +2,4 @@ django_commerce/
 manage.py
 migrations/
 __pycache__/
+db.sqlite3
