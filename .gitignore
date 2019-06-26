@@ -1,2 +1,4 @@
 django_commerce/
 manage.py
+migrations/
+__pycache__/
