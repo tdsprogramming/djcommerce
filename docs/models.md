@@ -1,8 +1,7 @@
 # DjCommerce Models
-=============
 
 ## Address
-------------
+
 ```python
 from djcommerce.models import Address
 ```
@@ -16,15 +15,32 @@ The `Address` model has the following fields:
 
 ## Cart
 ------------
+```python
+from djcommerce.models import Cart
+```
+The `Cart` model has the following fields:
+
 
 ## Category
 ------------
+```python
+from djcommerce.models import Category
+```
 
 ## Order
 ------------
+```python
+from djcommerce.models import Order
+```
 
 ## Product
 ------------
+```python
+from djcommerce.models import Product
+```
 
 ## Profile
 ------------
+```python
+from djcommerce.models import Profile
+```
