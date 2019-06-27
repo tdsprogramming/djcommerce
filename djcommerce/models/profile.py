@@ -11,3 +11,6 @@ class Profile(TimeStampedModel):
         on_delete = models.CASCADE
     )
     addresses = models.ManyToManyField(Address)
+
+    class Meta:
+        abstract = True

@@ -26,9 +26,15 @@ class Product(TimeStampedModel):
         self.stock -= number
         self.save()
 
+    class Meta:
+        abstract = True
+
 class ProductInCart(models.Model):
     product = models.ForeignKey(Product, on_delete = models.CASCADE)
     quantity = models.IntegerField()
 
     def get_subtotal(self):
         return self.product.price * Decimal(self.quantity)
+
+    class Meta:
+        abstract = True

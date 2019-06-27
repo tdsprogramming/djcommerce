@@ -9,3 +9,6 @@ class Cart(TimeStampedModel):
 
     def get_subtotal(self):
         return sum([p.get_subtotal for p in self.products])
+
+    class Meta:
+        abstract = True
