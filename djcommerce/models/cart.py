@@ -5,10 +5,13 @@ from django_extensions.db.models import TimeStampedModel
 from .product import ProductInCart
 
 class Cart(TimeStampedModel):
-    products = models.ManyToManyField(ProductInCart)
+    products_in_cart = models.ManyToManyField(ProductInCart)
 
     def get_subtotal(self):
-        return sum([p.get_subtotal for p in self.products])
+        subtotal = 0
+        for p in self.products_in_cart.all():
+            subtotal += p.get_subtotal()
+        return subtotal
 
     class Meta:
         abstract = True
