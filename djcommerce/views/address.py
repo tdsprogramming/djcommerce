@@ -1,5 +1,5 @@
 from django.views.generic import CreateView,DetailView,DeleteView,UpdateView,ListView
-from .models import Address
+from djcommerce.models import Address
 
 class AddressCreateView(CreateView):
     model = Address
@@ -10,13 +10,15 @@ class AddressCreateView(CreateView):
         'state',
         'zip'
     ]
+    template_name = 'address/create.html'
 
 class AddressDetailView(DetailView):
     model = Address
-
+    template_name = 'address/detail.html'
 
 class AddressListView(ListView):
     model = Address
+    template_name = 'address/list.html'
 
 class AddressUpdateView(UpdateView):
     model = Address
@@ -27,6 +29,7 @@ class AddressUpdateView(UpdateView):
         'state',
         'zip'
     ]
+    template_name = 'address/update.html'
 
 class AddressDeleteView(DeleteView):
     model = Address
