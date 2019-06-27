@@ -7,7 +7,7 @@ from .product import ProductInCart
 STATUSES = [
     ('cancelled', 'Cancelled'),
     ('complete', 'Complete'),
-    ('originated', 'Originated')
+    ('originated', 'Originated'),
     ('pending', 'Pending'),
     ('shipped', 'Shipped'),
 ]
