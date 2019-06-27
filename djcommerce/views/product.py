@@ -1,5 +1,5 @@
 from django.views.generic import CreateView,DetailView,DeleteView,UpdateView,ListView
-from .models import Product
+from djcommerce.models import Product
 
 class ProductCreateView(CreateView):
     model = Product
@@ -10,12 +10,15 @@ class ProductCreateView(CreateView):
         'price',
         'configurations'
     ]
+    template_name= 'product/create.html'
 
 class ProductDetailView(DetailView):
     model = Product
+    template_name= 'product/detail.html'
 
 class OrderListView(ListView):
     model = Product
+    template_name= 'product/list.html'
 
 class OrderUpdateView(UpdateView):
     model = Product
@@ -26,6 +29,8 @@ class OrderUpdateView(UpdateView):
         'price',
         'configurations'
     ]
+    template_name= 'product/update.html'
 
 class OrderDeleteView(DeleteView):
     model = Product
+    template_name= 'product/delete.html'
