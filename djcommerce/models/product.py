@@ -30,5 +30,5 @@ class ProductInCart(models.Model):
     product = models.ForeignKey(Product, on_delete = models.CASCADE)
     quantity = models.IntegerField()
 
-    def get_total(self):
+    def get_subtotal(self):
         return self.product.price * Decimal(self.quantity)

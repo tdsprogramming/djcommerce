@@ -7,8 +7,5 @@ from .product import ProductInCart
 class Cart(TimeStampedModel):
     products = models.ManyToManyField(ProductInCart)
 
-    def get_total(self):
-        total = 0
-        for p in self.products.all():
-            total += p.quantity * p.product.price
-        return total
+    def get_subtotal(self):
+        return sum([p.get_subtotal for p in self.products])
