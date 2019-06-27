@@ -1,12 +1,11 @@
 from django.db import models
+from django.conf import settings
 
 from django_extensions.db.models import TimeStampedModel
 
+from djcommerce.utils import get_product_model
 from .category import Category
-from .configuration import Configuration
-
-class ProductManager(models.Manager):
-    pass
+from .configuration import Configuration, ConfigurationOption
 
 class Product(TimeStampedModel):
     name = models.CharField(max_length = 150)
@@ -27,14 +26,17 @@ class Product(TimeStampedModel):
         self.save()
 
     class Meta:
-        abstract = True
+        abstract = False
+        if settings.PRODUCT_MODEL:
+            abstract = True
 
 class ProductInCart(models.Model):
-    product = models.ForeignKey(Product, on_delete = models.CASCADE)
+    product = models.ForeignKey(get_product_model(), on_delete = models.CASCADE)
     quantity = models.IntegerField()
+    configuration_options = models.ManyToManyField(ConfigurationOption)
 
     def get_subtotal(self):
-        return self.product.price * Decimal(self.quantity)
-
-    class Meta:
-        abstract = True
+        subtotal = self.product.price
+        for c in self.configuration_options.all():
+            subtotal += c.add_price
+        return subtotal *= self.quantity
