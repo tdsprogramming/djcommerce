@@ -33,3 +33,4 @@ class AddressUpdateView(UpdateView):
 
 class AddressDeleteView(DeleteView):
     model = Address
+    template_name = 'address.delete.html'
