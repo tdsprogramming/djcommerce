@@ -3,14 +3,14 @@ from django.db import models
 from django_extensions.db.models import TimeStampedModel
 
 from .product import ProductInCart
-# 
-# statuses = [
-#     ('cancelled', 'Cancelled'),
-#     ('complete', 'Complete'),
-#     ('originated', 'Originated')
-#     ('pending', 'Pending'),
-#     ('shipped', 'Shipped'),
-# ]
+
+STATUSES = [
+    ('cancelled', 'Cancelled'),
+    ('complete', 'Complete'),
+    ('originated', 'Originated')
+    ('pending', 'Pending'),
+    ('shipped', 'Shipped'),
+]
 
 class OrderManager(models.Manager):
     def total_revenue(self, status='Complete'):
@@ -19,9 +19,12 @@ class OrderManager(models.Manager):
 
 class Order(TimeStampedModel):
     products = models.ManyToManyField(ProductInCart)
-    status = models.CharField(max_length = 50)
+    status = models.CharField(max_length = 50, choices = STATUSES)
 
     objects = OrderManager()
 
     def get_subtotal(self):
         return sum([p.get_subtotal for p in self.products])
+
+    class Meta:
+        abstract = True

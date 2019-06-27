@@ -8,3 +8,6 @@ class Address(models.Model):
     city = models.CharField(max_length = 50)
     state = USStateField()
     zip = USZipCodeField()
+
+    class Meta:
+        abstract = True
