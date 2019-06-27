@@ -4,13 +4,13 @@ from django_extensions.db.models import TimeStampedModel
 
 from .product import ProductInCart
 
-statuses = (
+statuses = [
     ('cancelled', 'Cancelled'),
     ('complete', 'Complete'),
     ('originated', 'Originated')
     ('pending', 'Pending'),
     ('shipped', 'Shipped'),
-)
+]
 
 class OrderManager(models.Manager):
     def total_revenue(self, status='Complete'):
