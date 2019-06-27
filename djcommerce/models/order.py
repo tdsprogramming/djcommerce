@@ -5,20 +5,23 @@ from django_extensions.db.models import TimeStampedModel
 from .product import ProductInCart
 
 statuses = (
-    ('complete', 'Complete'),
     ('cancelled', 'Cancelled'),
+    ('complete', 'Complete'),
+    ('originated', 'Originated')
+    ('pending', 'Pending'),
     ('shipped', 'Shipped'),
-    ('returned', 'Returned'),
-
 )
 
 class OrderManager(models.Manager):
-    def total_sold(self):
-        pass
-        
+    def total_revenue(self, status='Complete'):
+        orders = self.filter(status=status)
+        return sum([o.get_subtotal() for o in orders])
+
 class Order(TimeStampedModel):
     products = models.ManyToManyField(ProductInCart)
-    status = models.CharField(max_length = 50)
+    status = models.CharField(max_length = 50, choices=statuses)
+
+    objects = OrderManager()
 
     def get_subtotal(self):
         return sum([p.get_subtotal for p in self.products])
