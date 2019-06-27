@@ -1,5 +1,5 @@
 from django.db import models
-from django.conf import settings.AUTH_USER_MODEL
+from django.conf import settings
 
 from django_extensions.db.models import TimeStampedModel
 
@@ -10,5 +10,4 @@ class Profile(TimeStampedModel):
         settings.AUTH_USER_MODEL,
         on_delete = models.CASCADE
     )
-    addresses = ManyToManyField(Address)
-    
+    addresses = models.ManyToManyField(Address)

@@ -3,3 +3,4 @@ manage.py
 migrations/
 __pycache__/
 db.sqlite3
+local_test_environ/

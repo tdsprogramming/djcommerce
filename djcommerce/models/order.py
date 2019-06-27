@@ -14,7 +14,8 @@ statuses = (
 
 class OrderManager(models.Manager):
     def total_sold(self):
-
+        pass
+        
 class Order(TimeStampedModel):
     products = models.ManyToManyField(ProductInCart)
     status = models.CharField(max_length = 50)
