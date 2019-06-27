@@ -1,5 +1,5 @@
 from django.views.generic import CreateView,DetailView,DeleteView,UpdateView,ListView
-from models import Address
+from .models import Address
 
 class AddressCreateView(CreateView):
     model = Address

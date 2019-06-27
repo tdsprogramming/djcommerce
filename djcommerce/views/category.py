@@ -1,5 +1,5 @@
 from django.views.generic import CreateView,DetailView,DeleteView,UpdateView,ListView
-from models import Category
+from .models import Category
 
 class CategoryCreateView(CreateView):
     model = Category
