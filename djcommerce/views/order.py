@@ -1,5 +1,5 @@
 from django.views.generic import CreateView,DetailView,DeleteView,UpdateView,ListView
-from models import Order
+from .models import Order
 
 class OrderCreateView(CreateView):
     model = Order
