@@ -1,4 +1,14 @@
 # DjCommerce Models
+## Installation
+1. `pip install djcommerce`
+2. Add `djcommerce` to `INSTALLED_APPS`
+    ```python
+    INSTALLED_APPS = (
+        ...
+        'djcommerce',
+        ...
+    )
+    ```
 
 When you are referencing a model, we suggest you use the methods from `djcommerce.utils`. For example, if you are setting a `ForeignKey` to `Address`, please set `Address = get_address_model()`.
 
@@ -61,7 +71,9 @@ The `ConfigurationOption` model allows for options to the configuration with the
 ```python
 from djcommerce.models import Order
 ```
-`Order` has a list of products, which is a `ManyToManyField` pointing to a `ProductInCart`.
+1. `Order` has a list of products, which is a `ManyToManyField` pointing to a `ProductInCart`.
+2. `status`: The status of which stage of the order process the users order is in.
+3. `get_subtotal`: Returns the subtotal of all of the products prices in the order combined.
 
 ## Products
 ```python
