@@ -16,5 +16,5 @@ class Profile(TimeStampedModel):
 
     class Meta:
         abstract = False
-        if settings.PROFILE_MODEL:
+        if hasattr(settings,"PROFILE_MODEL"):
             abstract = True

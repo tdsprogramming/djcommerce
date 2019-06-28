@@ -11,5 +11,5 @@ class Category(TimeStampedModel):
 
     class Meta:
         abstract = False
-        if settings.CATEGORY_MODEL:
+        if hasattr(settings,"CATEGORY_MODEL"):
             abstract = True

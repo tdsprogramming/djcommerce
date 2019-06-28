@@ -34,5 +34,5 @@ class Order(TimeStampedModel):
 
     class Meta:
         abstract = False
-        if settings.ORDER_MODEL:
+        if hasattr(settings,"ORDER_MODEL"):
             abstract = True
