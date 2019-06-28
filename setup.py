@@ -9,12 +9,16 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='djcommerce',
-    version='0.1.1',
+    version='0.2',
     packages=find_packages(),
     include_package_data=True,
     license='MIT License',
     description='A lightweight Django framework for ecommerce sites.',
     author='tdsprogramming & jwhprogramming',
+    install_requires=[
+        'django-localflavor>=2.2',
+        'django-extensions>=2.1.9'
+    ],
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',

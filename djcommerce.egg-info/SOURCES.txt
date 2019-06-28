@@ -14,10 +14,8 @@ djcommerce/utils.py
 djcommerce.egg-info/PKG-INFO
 djcommerce.egg-info/SOURCES.txt
 djcommerce.egg-info/dependency_links.txt
+djcommerce.egg-info/requires.txt
 djcommerce.egg-info/top_level.txt
-djcommerce/migrations/0001_initial.py
-djcommerce/migrations/0002_auto_20190627_2057.py
-djcommerce/migrations/0003_auto_20190627_2102.py
 djcommerce/migrations/__init__.py
 djcommerce/models/__init__.py
 djcommerce/models/address.py
@@ -42,6 +40,4 @@ local_test_environ/models.py
 local_test_environ/tests.py
 local_test_environ/urls.py
 local_test_environ/views.py
-local_test_environ/migrations/0001_initial.py
-local_test_environ/migrations/0002_customaddress.py
 local_test_environ/migrations/__init__.py
