@@ -2,6 +2,19 @@
 
 When you are referencing a model, we suggest you use the methods from `djcommerce.utils`. For example, if you are setting a `ForeignKey` to `Address`, please set `Address = get_address_model()`.
 
+If you want to use the built in models, you do not need to do much configuration. However, if you want to inherit from the built in models, you need to create your own model, then in `settings.py` define where your new model is via a string.
+
+For example, let's say you have an address app with a custom address model in `address/models.py`:
+
+```python
+from djcommerce.models import Address
+
+class MyCustomAddress(Address):
+    some_custom_field = models.CharField(max_length = 50)
+```
+
+In your `settings.py`, you will then need to make a new variable `ADDRESS_MODEL = 'address.models.MyCustomAddress'` so that it knows where to grab the address model for related models.
+
 ## Address
 ```python
 from djcommerce.models import Address
