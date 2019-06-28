@@ -11,7 +11,7 @@ class Address(models.Model):
     zip = USZipCodeField()
 
     def __str__(self):
-        return "{}{},{},{}{}".format(self.address_line_1,self.address_line_2,self.city,self.state,self.zip)
+        return "{} {}, {}, {} {}".format(self.address_line_1,self.address_line_2,self.city,self.state,self.zip)
 
     class Meta:
         abstract = False

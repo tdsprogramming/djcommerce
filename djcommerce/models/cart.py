@@ -10,6 +10,9 @@ Product = get_product_model()
 class Cart(TimeStampedModel):
     products_in_cart = models.ManyToManyField(Product)
 
+    def __str__(self):
+        return "{} items in cart".format(self.products_in_cart.all().count())
+
     def get_subtotal(self):
         subtotal = 0
         for p in self.products_in_cart.all():
