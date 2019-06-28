@@ -6,14 +6,11 @@ from django_extensions.db.models import TimeStampedModel
 from djcommerce.utils import (
     get_category_model,
     get_configuration_model,
-    get_configuration_option_model,
-    get_product_model,
+    get_product_model
 )
 
 Category = get_category_model()
 Configuration = get_configuration_model()
-ConfigurationOption = get_configuration_option_model()
-Product = get_product_model()
 
 class Product(TimeStampedModel):
     name = models.CharField(max_length = 150)
@@ -37,6 +34,8 @@ class Product(TimeStampedModel):
         abstract = False
         if hasattr(settings,"PRODUCT_MODEL"):
             abstract = True
+
+Product = get_product_model()
 
 class ProductInCart(models.Model):
     product = models.ForeignKey(Product, on_delete = models.CASCADE)
