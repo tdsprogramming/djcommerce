@@ -10,6 +10,7 @@ from djcommerce.models import (
     ConfigurationOption,
     Order,
     Product,
+    ProductInCart,
     Profile
 )
 
@@ -47,6 +48,11 @@ def get_product_model():
     if settings.PRODUCT_MODEL:
         return importlib.import_module(settings.PRODUCT_MODEL)
     return Product
+
+def get_product_in_cart_model():
+    if settings.PRODUCT_IN_CART_MODEL:
+        return importlib.import_module(settings.PRODUCT_IN_CART_MODEL)
+    return ProductInCart
 
 def get_profile_model():
     if settings.PROFILE_MODEL:

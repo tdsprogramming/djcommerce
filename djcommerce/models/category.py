@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 from django_extensions.db.models import TimeStampedModel
 
@@ -9,4 +10,6 @@ class Category(TimeStampedModel):
         return "{}".format(self.name)
 
     class Meta:
-        abstract = True
+        abstract = False
+        if settings.CATEGORY_MODEL:
+            abstract = True

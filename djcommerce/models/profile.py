@@ -3,7 +3,9 @@ from django.conf import settings
 
 from django_extensions.db.models import TimeStampedModel
 
-from .address import Address
+from djcommerce.utils import get_address_model
+
+Address = get_address_model()
 
 class Profile(TimeStampedModel):
     user = models.ForeignKey(
@@ -13,4 +15,6 @@ class Profile(TimeStampedModel):
     addresses = models.ManyToManyField(Address)
 
     class Meta:
-        abstract = True
+        abstract = False
+        if settings.PROFILE_MODEL:
+            abstract = True

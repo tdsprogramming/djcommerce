@@ -1,11 +1,14 @@
 from django.db import models
+from django.conf import settings
 
 from django_extensions.db.models import TimeStampedModel
 
-from .product import ProductInCart
+from djcommerce.utils import get_product_model
+
+Product = get_product_model()
 
 class Cart(TimeStampedModel):
-    products_in_cart = models.ManyToManyField(ProductInCart)
+    products_in_cart = models.ManyToManyField(Product)
 
     def get_subtotal(self):
         subtotal = 0
@@ -14,4 +17,6 @@ class Cart(TimeStampedModel):
         return subtotal
 
     class Meta:
-        abstract = True
+        abstract = False
+        if settings.CART_MODEL:
+            abstract = True

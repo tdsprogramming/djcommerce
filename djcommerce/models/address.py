@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 from localflavor.us.models import USStateField, USZipCodeField
 
@@ -10,4 +11,6 @@ class Address(models.Model):
     zip = USZipCodeField()
 
     class Meta:
-        abstract = True
+        abstract = False
+        if settings.ADDRESS:
+            abstract = True

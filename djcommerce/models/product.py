@@ -3,9 +3,17 @@ from django.conf import settings
 
 from django_extensions.db.models import TimeStampedModel
 
-from djcommerce.utils import get_product_model
-from .category import Category
-from .configuration import Configuration, ConfigurationOption
+from djcommerce.utils import (
+    get_category_model,
+    get_configuration_model,
+    get_configuration_option_model,
+    get_product_model,
+)
+
+Category = get_category_model()
+Configuration = get_configuration_model()
+ConfigurationOption = get_configuration_option_model()
+Product = get_product_model()
 
 class Product(TimeStampedModel):
     name = models.CharField(max_length = 150)
@@ -31,7 +39,7 @@ class Product(TimeStampedModel):
             abstract = True
 
 class ProductInCart(models.Model):
-    product = models.ForeignKey(get_product_model(), on_delete = models.CASCADE)
+    product = models.ForeignKey(Product, on_delete = models.CASCADE)
     quantity = models.IntegerField()
     configuration_options = models.ManyToManyField(ConfigurationOption)
 
@@ -40,3 +48,8 @@ class ProductInCart(models.Model):
         for c in self.configuration_options.all():
             subtotal += c.add_price
         return subtotal *= self.quantity
+
+    class Meta:
+        abstract = False
+        if settings.PRODUCT_IN_CART_MODEL:
+            abstract = True
