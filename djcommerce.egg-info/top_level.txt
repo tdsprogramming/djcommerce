@@ -1,0 +1,3 @@
+django_commerce
+djcommerce
+local_test_environ
