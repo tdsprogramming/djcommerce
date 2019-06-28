@@ -16,8 +16,11 @@ STATUSES = [
 ProductInCart = get_product_in_cart_model()
 
 class OrderManager(models.Manager):
-    def total_revenue(self, status='Complete'):
-        orders = self.filter(status=status)
+    def total_revenue(self, status=None):
+        if status:
+            orders = self.filter(status=status)
+        else:
+            orders = self.all()
         return sum([o.get_subtotal() for o in orders])
 
 class Order(TimeStampedModel):
@@ -27,7 +30,7 @@ class Order(TimeStampedModel):
     objects = OrderManager()
 
     def get_subtotal(self):
-        return sum([p.get_subtotal for p in self.products])
+        return sum([p.get_subtotal for p in self.products.all()])
 
     class Meta:
         abstract = False
