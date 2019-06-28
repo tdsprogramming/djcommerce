@@ -18,5 +18,5 @@ class Cart(TimeStampedModel):
 
     class Meta:
         abstract = False
-        if settings.CART_MODEL:
+        if hasattr(settings,"CART_MODEL"):
             abstract = True

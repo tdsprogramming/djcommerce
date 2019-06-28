@@ -35,7 +35,7 @@ class Product(TimeStampedModel):
 
     class Meta:
         abstract = False
-        if settings.PRODUCT_MODEL:
+        if hasattr(settings,"PRODUCT_MODEL"):
             abstract = True
 
 class ProductInCart(models.Model):
@@ -51,5 +51,5 @@ class ProductInCart(models.Model):
 
     class Meta:
         abstract = False
-        if settings.PRODUCT_IN_CART_MODEL:
+        if hasattr(settings,"PRODUCT_IN_CART_MODEL"):
             abstract = True
