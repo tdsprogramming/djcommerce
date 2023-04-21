@@ -4,4 +4,4 @@ django-localflavor==2.2
 python-stdnum==1.11
 pytz==2019.1
 six==1.12.0
-sqlparse==0.3.0
+sqlparse==0.4.4
